@@ -1,0 +1,26 @@
+version: '2.4'
+services:
+  web-wol:
+    image: server.nevermad.de/delachs/web-wol:latest
+    container_name: web-wol
+    restart: unless-stopped
+    environment:
+      - WEB_WOL_FROM_IP=192.168.20.12
+      - WEB_WOL_REDIRECT_URL=server.example.com/booted
+    networks:
+      proxy:
+      vlan:
+        ipv4_address: 192.168.20.12
+
+networks:
+  proxy:
+    external: true
+  vlan:
+    driver: macvlan
+    driver_opts:
+      parent: eno1
+    ipam:
+      config:
+        - subnet: "192.168.20.0/24"
+          ip_range: "192.168.20.12/32"
+          gateway: "192.168.20.1"
