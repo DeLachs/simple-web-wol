@@ -6,7 +6,7 @@ services:
     restart: unless-stopped
     environment:
       - WEB_WOL_FROM_IP=192.168.20.12
-      - WEB_WOL_REDIRECT_URL=server.example.com/booted
+      - WEB_WOL_REDIRECT_URL=https://server.example.com/booted
     networks:
       vlan:
         ipv4_address: 192.168.20.12
