@@ -15,11 +15,11 @@ def wake_device(target_mac):
   if RE_MAC_PATTERN.match(target_mac):
     try:
       send_magic_packet(target_mac, interface=FROM_IP)
+      return(f"<script type=\"text/javascript\">window.location.replace(\"{REDIRECT_URL}\");</script>")
     except OSError as e:
       return(str(e))
-    return(f"<script type=\"text/javascript\">window.location.replace(\"{REDIRECT_URL}\");</script>")
   else:
-    return("Not a valid mac address! Please use the following format: ff-ff-ff-ff-ff-ff")
+    return(f"{target_mac} is not a valid mac address! Please use the following format: ff-ff-ff-ff-ff-ff")
 
 
 # Default redirect page if nothing different is supplied by the user.
