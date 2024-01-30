@@ -1,7 +1,7 @@
 version: '2.4'
 services:
   web-wol:
-    image: server.nevermad.de/delachs/web-wol:latest
+    image: ghcr.io/delachs/simple-web-wol:latest
     container_name: web-wol
     restart: unless-stopped
     environment:
